@@ -6,7 +6,7 @@ metadata:
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
-    email: information.technology@impressdesigns.com
+    email: information.technology@darbia.dev
     privateKeySecretRef:
       name: letsencrypt
     solvers:
