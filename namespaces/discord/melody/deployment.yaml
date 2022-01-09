@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: discord
+  name: melody
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: melody
+  template:
+    metadata:
+      labels:
+        app: melody
+    spec:
+      containers:
+        - name: melody
+          image: ghcr.io/darbiadev/melody:main
+          envFrom:
+            - secretRef:
+                name: discord-secrets
+            - secretRef:
+                name: melody-secrets
+      imagePullSecrets:
+        - name: dockerconfigjson-github
