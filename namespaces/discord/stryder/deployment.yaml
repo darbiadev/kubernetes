@@ -2,24 +2,23 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: discord
-  name: melody
+  name: stryder
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: melody
+      app: stryder
   template:
     metadata:
       labels:
-        app: melody
+        app: stryder
     spec:
       containers:
-        - name: melody
-          image: ghcr.io/darbiadev/melody:main
+        - name: stryder
+          image: ghcr.io/darbiadev/stryder:main
+          imagePullPolicy: Always
           envFrom:
             - secretRef:
-                name: discord-secrets
-            - secretRef:
-                name: melody-secrets
+                name: stryder-secrets
       imagePullSecrets:
         - name: dockerconfigjson-github
